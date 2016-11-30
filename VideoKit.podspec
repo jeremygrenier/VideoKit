@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/jeremygrenier/VideoKit"
 
-  s.license      = { :type => "MIT" }
+  s.license      = "MIT"
 
   s.author       = "Jeremy Grenier"
 
