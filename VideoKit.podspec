@@ -8,22 +8,22 @@
 
 Pod::Spec.new do |s|
 
-  s.name         = "VideoKit"
-  s.version      = "0.1.0"
-  s.summary      = "VideoKit your video edition toolbox"
+  s.name         = 'VideoKit'
+  s.version      = '0.1.0'
+  s.summary      = 'VideoKit your video edition toolbox'
 
-  s.homepage     = "https://github.com/jeremygrenier/VideoKit"
+  s.homepage     = 'https://github.com/jeremygrenier/VideoKit'
 
-  s.license      = "MIT"
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
 
-  s.author       = "Jeremy Grenier"
-
-
-  s.platform     = :ios, "9.0"
-  s.source       = { :git => "https://github.com/jeremygrenier/VideoKit.git", :tag => "#{s.version}" }
+  s.author       = 'Jeremy Grenier'
 
 
-  s.source_files  = "Source/*.swift"
+  s.platform     = :ios, '9.0'
+  s.source       = { :git => 'https://github.com/jeremygrenier/VideoKit.git', :tag => s.version }
+
+
+  s.source_files  = 'Source/*.swift'
 
   s.requires_arc = true
 end
