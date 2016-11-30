@@ -1,0 +1,5 @@
+use_frameworks!
+
+target 'VideoKitExample' do
+  pod 'VideoKit', :path => '../VideoKit.podspec'
+end

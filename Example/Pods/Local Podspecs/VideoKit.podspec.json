@@ -1,0 +1,19 @@
+{
+  "name": "VideoKit",
+  "version": "0.0.1",
+  "summary": "VideoKit your video edition toolbox",
+  "homepage": "https://github.com/jeremygrenier/VideoKit",
+  "license": {
+    "type": "MIT"
+  },
+  "authors": "Jeremy Grenier",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/jeremygrenier/VideoKit.git",
+    "tag": "0.0.1"
+  },
+  "source_files": "Source/*.swift",
+  "requires_arc": true
+}

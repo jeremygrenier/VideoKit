@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="VideoKitExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOe-xB-hF1">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYy-qR-zfv">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="play" id="bYj-99-Wns">
+                                        <connections>
+                                            <action selector="playPressedFor:" destination="BYZ-38-t0r" id="vrB-3W-aWX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="H5f-GM-nuq"/>
+                                    <barButtonItem title="Export" id="lyZ-Et-Nj5">
+                                        <connections>
+                                            <action selector="export" destination="BYZ-38-t0r" id="96z-y7-fef"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BOe-xB-hF1" firstAttribute="trailing" secondItem="NYy-qR-zfv" secondAttribute="trailing" id="KqF-6T-wQj"/>
+                            <constraint firstItem="BOe-xB-hF1" firstAttribute="top" secondItem="NYy-qR-zfv" secondAttribute="top" id="Vc1-gs-0ns"/>
+                            <constraint firstItem="BOe-xB-hF1" firstAttribute="leading" secondItem="NYy-qR-zfv" secondAttribute="leading" id="dnX-g2-Ofd"/>
+                            <constraint firstItem="BOe-xB-hF1" firstAttribute="bottom" secondItem="NYy-qR-zfv" secondAttribute="bottom" id="hu8-mX-8ij"/>
+                            <constraint firstAttribute="trailing" secondItem="NYy-qR-zfv" secondAttribute="trailing" id="mWb-mU-fH6"/>
+                            <constraint firstItem="NYy-qR-zfv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oVN-Jg-lRD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NYy-qR-zfv" secondAttribute="bottom" id="vgS-dW-1ls"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playButton" destination="bYj-99-Wns" id="dZa-MS-WOA"/>
+                        <outlet property="toolbar" destination="NYy-qR-zfv" id="s4k-yD-Ffp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,16 @@
+PODS:
+  - VideoKit (0.0.1)
+
+DEPENDENCIES:
+  - VideoKit (from `../VideoKit.podspec`)
+
+EXTERNAL SOURCES:
+  VideoKit:
+    :path: ../VideoKit.podspec
+
+SPEC CHECKSUMS:
+  VideoKit: f8c505e422033705eb4cdbc7fe1624391647028e
+
+PODFILE CHECKSUM: fdb42b933f4d09f149eb8a12b620e77d2d5becd8
+
+COCOAPODS: 1.1.1
