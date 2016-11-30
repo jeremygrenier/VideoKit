@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "VideoKit"
-  s.version      = "0.0.1"
+  s.version      = "0.1.0"
   s.summary      = "VideoKit your video edition toolbox"
 
   s.homepage     = "https://github.com/jeremygrenier/VideoKit"
