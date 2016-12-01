@@ -16,9 +16,17 @@ public struct OverlayFilter: VideoFilter
     public init(image: UIImage, size: CGSize, transform: CGAffineTransform = .identity)
     {
         if let cgImage = image.cgImage {
-            let matrix = transform.concatenating(CGAffineTransform(translationX: size.width, y: 0))
 
-            overlay = CIImage(cgImage: cgImage).applying(matrix)
+            var matrix = transform
+
+            if transform.b != 0 && transform.b == transform.c {
+                matrix = transform.concatenating(CGAffineTransform(rotationAngle: .pi))
+            }
+
+            let overlay = CIImage(cgImage: cgImage).applying(matrix)
+            let rect = overlay.extent
+
+            self.overlay = overlay.applying(CGAffineTransform(translationX: -rect.origin.x, y: -rect.origin.y))
         }
     }
 
@@ -26,12 +34,7 @@ public struct OverlayFilter: VideoFilter
     {
         guard let overlay = overlay else { return source }
 
-        let params = [kCIInputImageKey: overlay, kCIInputBackgroundImageKey: source]
-        if let filter = CIFilter(name: "CISourceOverCompositing", withInputParameters: params),
-            let outputImage = filter.outputImage {
-            return outputImage
-        }
-
-        return source
+        let outputImage = overlay.compositingOverImage(source)
+        return outputImage
     }
 }

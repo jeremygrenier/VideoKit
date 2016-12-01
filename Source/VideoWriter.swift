@@ -21,26 +21,6 @@ public final class VideoWriter
 {
     public weak var delegate: VideoWriterDelegate?
 
-    private let glContext: EAGLContext
-    private  let ciContext: CIContext
-    private  let writer: AVAssetWriter
-
-    class func setupWriter(outputFileURL: URL) -> AVAssetWriter
-    {
-        let fileManager = FileManager.default
-
-        let outputFileExists = fileManager.fileExists(atPath: outputFileURL.path)
-        if outputFileExists {
-            do {
-                try fileManager.removeItem(at: outputFileURL)
-            } catch _ {}
-        }
-
-        let writer = try! AVAssetWriter(outputURL: outputFileURL, fileType: AVFileTypeMPEG4)
-
-        return writer
-    }
-
     public lazy var videoOutputSettings: [String: Any] = {
         return [
             AVVideoCodecKey: AVVideoCodecH264,
@@ -70,18 +50,37 @@ public final class VideoWriter
         ]
     }()
 
-    var videoInput: AVAssetWriterInput!
-    var audioInput: AVAssetWriterInput!
+    private var videoInput: AVAssetWriterInput!
+    private var audioInput: AVAssetWriterInput!
 
-    var isVideoCompleted = false
-    var isAudioCompleted = false
+    private var isVideoCompleted = false
+    private var isAudioCompleted = false
 
-    var writerInputAdapater: AVAssetWriterInputPixelBufferAdaptor!
+    private var writerInputAdapater: AVAssetWriterInputPixelBufferAdaptor!
 
-    let render: CompositionRender
+    private let render: CompositionRender
 
     private var lastTime = kCMTimeZero
     private var inputQueue = DispatchQueue(label: "me.jgrenier.videokit.input_queue")
+
+    private let glContext: EAGLContext
+    private let ciContext: CIContext
+    private let writer: AVAssetWriter
+
+    class func setupWriter(outputFileURL: URL) -> AVAssetWriter
+    {
+        let fileManager = FileManager.default
+
+        if fileManager.isDeletableFile(atPath: outputFileURL.path) {
+            do {
+                try fileManager.removeItem(at: outputFileURL)
+            } catch _ {}
+        }
+
+        let writer = try! AVAssetWriter(outputURL: outputFileURL, fileType: AVFileTypeMPEG4)
+
+        return writer
+    }
 
     public init(outputFileURL: URL, render: CompositionRender)
     {
@@ -94,19 +93,16 @@ public final class VideoWriter
 
         // Audio
         audioInput = AVAssetWriterInput(mediaType: AVMediaTypeAudio, outputSettings: audioOutputSettings)
-        audioInput.expectsMediaDataInRealTime = false
         writer.add(audioInput)
 
         // Video
         videoInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo, outputSettings: videoOutputSettings)
         videoInput.transform = render.transform
-        videoInput.expectsMediaDataInRealTime = false
         writer.add(videoInput)
 
         writerInputAdapater = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: videoInput, sourcePixelBufferAttributes: sourcePixelBufferAttributes)
 
         writer.startWriting()
-
         writer.startSession(atSourceTime: kCMTimeZero)
     }
 
